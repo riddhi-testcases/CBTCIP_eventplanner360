@@ -28,30 +28,30 @@ export default async function Home({ searchParams }: SearchParamProps) {
             <p className="p-regular-20 md:p-regular-24">Unlock exclusive insights and strategies from over 4000 seasoned experts across top-tier global corporations, all within our vibrant community.</p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
               <Link href="#events">
-                Get Started
+                Explore Now
               </Link>
             </Button>
           </div>
 
-          <Image
+          <Image 
             src="/assets/images/hero2.png"
             alt="hero"
-            width={4000}
-            height={2000}
+            width={1000}
+            height={1000}
             className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
           />
         </div>
-      </section>
+      </section> 
 
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Trust by <br /> Our Events</h2>
+        <h2 className="h2-bold">Trust by <br /> Thousands of Events</h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search />
           <CategoryFilter />
         </div>
 
-        <Collection
+        <Collection 
           data={events?.data}
           emptyTitle="No Events Found"
           emptyStateSubtext="Come back later"
