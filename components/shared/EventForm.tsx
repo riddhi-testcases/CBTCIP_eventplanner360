@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm, Controller } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation"
 import { createEvent, updateEvent } from "@/lib/actions/event.actions"
 import { IEvent } from "@/lib/database/models/event.model"
 
+
 type EventFormProps = {
   userId: string
   type: "Create" | "Update"
@@ -31,7 +32,7 @@ type EventFormProps = {
 
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([])
-  const initialValues = event && type === 'Update'
+  const initialValues = event && type === 'Update' 
     ? { 
       ...event, 
       startDateTime: new Date(event.startDateTime), 
@@ -202,19 +203,13 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                         className="filter-grey"
                       />
                       <p className="ml-3 whitespace-nowrap text-grey-600">Start Date:</p>
-                      <Controller
-                        control={form.control}
-                        name="startDateTime"
-                        render={({ field }) => (
-                          <DatePicker 
-                            selected={field.value} 
-                            onChange={(date) => field.onChange(date)} 
-                            showTimeSelect
-                            timeInputLabel="Time:"
-                            dateFormat="MM/dd/yyyy h:mm aa"
-                            wrapperClassName="datePicker"
-                          />
-                        )}
+                      <DatePicker 
+                        selected={field.value} 
+                        onChange={(date: Date | null) => field.onChange(date)} 
+                        showTimeSelect
+                        timeInputLabel="Time:"
+                        dateFormat="MM/dd/yyyy h:mm aa"
+                        wrapperClassName="datePicker"
                       />
                     </div>
 
@@ -239,19 +234,13 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                         className="filter-grey"
                       />
                       <p className="ml-3 whitespace-nowrap text-grey-600">End Date:</p>
-                      <Controller
-                        control={form.control}
-                        name="endDateTime"
-                        render={({ field }) => (
-                          <DatePicker 
-                            selected={field.value} 
-                            onChange={(date) => field.onChange(date)} 
-                            showTimeSelect
-                            timeInputLabel="Time:"
-                            dateFormat="MM/dd/yyyy h:mm aa"
-                            wrapperClassName="datePicker"
-                          />
-                        )}
+                      <DatePicker 
+                        selected={field.value} 
+                        onChange={(date: Date | null) => field.onChange(date)} 
+                        showTimeSelect
+                        timeInputLabel="Time:"
+                        dateFormat="MM/dd/yyyy h:mm aa"
+                        wrapperClassName="datePicker"
                       />
                     </div>
 
